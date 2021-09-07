@@ -18,20 +18,32 @@
         </div>
         <div class="container mt-5">
             <div class="row d-flex justify-content-center">
-                <div class="col col-sm-4 col-lg-2">
-                    <label for="lat" class="form-label">Latitude</label>
-                    <input id="lat" type="text" class="form-control" placeholder="Lat">
-                </div>
-                <div class="col col-sm-4 col-lg-2">
-                    <label for="lon" class="form-label">Longitude</label>
-                    <input id="lon" type="text" class="form-control" placeholder="Lon">
+                <div class="col col-sm-8 col-lg-4">
+                    <select name="cities" id="cities" class="form-select">
+                        <option selected disabled>Select a City</option>
+                        <option value="vilnius">Vilnius</option>
+                        <option value="warsaw">Warsaw</option>
+                        <option value="london">London</option>
+                        <option value="stockholm">Stockholm</option>
+                        <option value="helsinki">Helsinki</option>
+                        <option value="dublin">Dublin</option>
+                        <option value="oslo">Oslo</option>
+                    </select>
                 </div>
             </div>
             <div class="row d-flex justify-content-center mt-3">
                 <div class="col col-sm-8 col-lg-4">
-                    <button style="width: 100%;" class="btn btn-success">Fetch</button>
+                    <button id="button" style="width: 100%;" class="btn btn-success" onclick="fetchCity()">Fetch</button>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col col-sm-8 col-lg-4 mt-3" id="error">
                 </div>
             </div>
         </div>
+        <div class="container" id="weather"> 
+        </div>
     </body>
+    <script src="/modules/GetWeatherData.js"></script>
+    <script src="index.js"></script>
 </html>

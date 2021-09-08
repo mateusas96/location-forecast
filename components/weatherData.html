@@ -1,0 +1,20 @@
+<div class="container border rounded-top border-white border-top-0 border-start-0 border-end-0 bg-dark">
+	<div class="row row-cols-3 row-cols-sm-6 text-center p-2">
+		<div class="col d-flex align-items-center justify-content-center border border-dark">Time</div>
+		<div class="col d-flex align-items-center justify-content-center border border-dark">Air temperature, °C</div>
+		<div class="col d-flex align-items-center justify-content-center border border-dark">Relative Humidity, %</div>
+		<div class="col d-flex align-items-center justify-content-center border border-dark">Wind Speed, m/s</div>
+		<div class="col d-flex align-items-center justify-content-center border border-dark">Wind From Direction</div>
+		<div class="col d-flex align-items-center justify-content-center border border-dark">Probability of Rain, %</div>
+	</div>
+</div>
+<div class="container border border-dark border-2 border-top-0 rounded-bottom overflow-auto" id="weatherDataTable"></div>
+<style>
+	.container.border.rounded-top, #weatherDataTable {
+		color: white;
+		max-height: 400px;
+	}
+	#weatherDataTable > .row:hover {
+		background-color: #198754;
+	}
+</style>

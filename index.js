@@ -32,6 +32,12 @@ const cities = {
 const fetchCity = () => {
 	const city = cities[document.getElementById('cities').value];
 	if (!city) return;
-	const weatherData = new GetWeatherData(city);
-	weatherData.getData();
+	displayData(city);
+};
+
+const displayData = async(city) => {
+	const weatherData = new GetWeatherData(city, 'button', 'error');
+	const displayWeatherData = new DisplayWeatherData(await weatherData.getData(), 'weatherData', 'weatherDataTable');
+	displayWeatherData.displayData();
+	weatherData.removeLoader();
 }

@@ -1,7 +1,7 @@
-function GetWeatherData(cityData) {
+function GetWeatherData(cityData, fetchBtnId, errorId) {
 	this.cityName = cityData.name;
-	this.buttonId = 'button';
-	this.errorId = 'error';
+	this.buttonId = fetchBtnId;
+	this.errorId = errorId;
 	this.url = `https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${cityData.lat}&lon=${cityData.lon}`;
 	this.weatherData = [];
 
@@ -23,6 +23,24 @@ function GetWeatherData(cityData) {
 	};
 
 	/**
+	 * Remove loader after successful/unsuccessful fetch
+	 */
+	this.removeLoader = () => {
+		const button = document.getElementById(this.buttonId);
+		button.innerHTML = '';
+		button.removeAttribute('disabled');
+		button.insertAdjacentText('afterbegin', 'Fetch');
+	}
+
+	/**
+	 * Remove error message to prevent from stacking up in HTML
+	 */
+	this.removeErrorMsg = () => {
+		const error = document.getElementById(this.errorId);
+		error.innerHTML = '';
+	}
+
+	/**
 	 * Shows error message from request
 	 */
 	this.displayError = (message) => {
@@ -36,14 +54,20 @@ function GetWeatherData(cityData) {
 		errorMsg.insertAdjacentText('afterbegin', message);
 	}
 
+	/**
+	 * Get weather data from endpoint
+	 * Returns array on success
+	 * Throws error on failure
+	 * @return array
+	 */
 	this.getData = async() => {
 		this.displayLoader();
 
 		try {
 			const data = await fetch(this.url);
-			const {properties} = await data.json();
+			const {properties: {timeseries}} =  await data.json();
 			
-			this.weatherData = properties.timeseries.map(el => {
+			this.weatherData = timeseries.map(el => {
 				return {
 					time: el.time,
 					airTemperature: el.data.instant.details.air_temperature,
@@ -53,7 +77,10 @@ function GetWeatherData(cityData) {
 					probabilityOfPrecipitation: el.data.next_1_hours?.details.probability_of_precipitation ?? '-',
 				}
 			});
+
+			return this.weatherData;
 		} catch (message) {
+			this.removeErrorMsg();
 			this.displayError(message);
 		}
 	};

@@ -1,8 +1,8 @@
 const testsTable = document.getElementById('testsTableBody');
 const testingData = {
 	cityName: 'Las Vegas',
-	lat: 54.6872,
-	lon: 25.2797,
+	lat: 36.1146,
+	lon: -115.1728,
 }
 
 /**

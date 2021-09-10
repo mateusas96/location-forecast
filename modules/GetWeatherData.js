@@ -68,13 +68,15 @@ function GetWeatherData(cityData, fetchBtnId, errorId) {
 			const {properties: {timeseries}} =  await data.json();
 			
 			this.weatherData = timeseries.map(el => {
+				const date = new Date(el.time).toLocaleString();
+
 				return {
-					time: el.time,
+					time: date,
 					airTemperature: el.data.instant.details.air_temperature,
 					windSpeed: el.data.instant.details.wind_speed,
 					relativeHumidity: el.data.instant.details.relative_humidity,
 					windFromDirection: el.data.instant.details.wind_from_direction,
-					probabilityOfPrecipitation: el.data.next_1_hours?.details.probability_of_precipitation ?? '-',
+					precipitationAmount: el.data.next_1_hours?.details.precipitation_amount ?? '-',
 				}
 			});
 

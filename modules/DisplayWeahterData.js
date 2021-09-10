@@ -38,7 +38,7 @@ function DisplayWeatherData(weatherData, weatherDataId, weatherDataTableId) {
 			newCol3.innerHTML = item.relativeHumidity;
 			newCol4.innerHTML = item.windSpeed;
 			newCol5.innerHTML = item.windFromDirection;
-			newCol6.innerHTML = item.probabilityOfPrecipitation;
+			newCol6.innerHTML = item.precipitationAmount;
 
 			newRow.append(newCol1, newCol2, newCol3, newCol4, newCol5, newCol6);
 		});

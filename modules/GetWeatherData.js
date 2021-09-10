@@ -1,5 +1,9 @@
+/**
+ * @param {Array} cityData
+ * @param {String} fetchBtnId
+ * @param {String} errorId
+ */
 function GetWeatherData(cityData, fetchBtnId, errorId) {
-	this.cityName = cityData.name;
 	this.buttonId = fetchBtnId;
 	this.errorId = errorId;
 	this.url = `https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=${cityData.lat}&lon=${cityData.lon}`;
@@ -42,6 +46,7 @@ function GetWeatherData(cityData, fetchBtnId, errorId) {
 
 	/**
 	 * Shows error message from request
+	 * @param {String}
 	 */
 	this.displayError = (message) => {
 		const error = document.getElementById(this.errorId);
@@ -61,8 +66,6 @@ function GetWeatherData(cityData, fetchBtnId, errorId) {
 	 * @return array
 	 */
 	this.getData = async() => {
-		this.displayLoader();
-
 		try {
 			const data = await fetch(this.url);
 			const {properties: {timeseries}} =  await data.json();

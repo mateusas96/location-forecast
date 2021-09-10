@@ -37,6 +37,8 @@ const fetchCity = () => {
 
 const displayData = async(city) => {
 	const weatherData = new GetWeatherData(city, 'button', 'error');
+	weatherData.displayLoader();
+	
 	const displayWeatherData = new DisplayWeatherData(await weatherData.getData(), 'weatherData', 'weatherDataTable');
 	displayWeatherData.displayData();
 	weatherData.removeLoader();

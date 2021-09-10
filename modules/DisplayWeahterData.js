@@ -1,3 +1,8 @@
+/**
+ * @param {Array} weatherData
+ * @param {String} weatherDataId
+ * @param {String} weatherDataTableId
+ */
 function DisplayWeatherData(weatherData, weatherDataId, weatherDataTableId) {
 	this.data = weatherData;
 	this.weatherElId = weatherDataId;

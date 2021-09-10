@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+		<link rel="stylesheet" href="/css/customScrollBar.css">
+		<title>Tests</title>
+		<style>
+            html {
+                height: 100%;
+            }
+        </style>
+	</head>
+	<body class="bg-secondary bg-gradient">
+		<div class="container d-flex justify-content-center mt-4">
+            <h1>Tests</h1>
+        </div>
+		<div class="container d-flex justify-content-center mt-4">
+			<div class="table-responsive w-100">
+				<table class="table table-bordered table-hover text-center border border-dark">
+					<thead class="table-dark position-sticky" >
+						<tr>
+							<th>Test Name</th>
+							<th>Input</th>
+							<th>Test Result</th>
+							<th>Expected Result</th>
+							<th>Passed</th>
+						</tr>
+					</thead>
+					<tbody id="testsTableBody"></tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+	<style>
+		tbody tr:hover {
+			filter: brightness(85%);
+		}
+		tbody tr td {
+			color: white;
+		}
+		.table-responsive {
+			height: 400px;
+		}
+		thead {
+			top: -1px;
+			z-index: 100;
+		}
+	</style>
+	<script src="/modules/GetWeatherData.js"></script>
+    <script src="/tests/tests.js"></script>
+</html>

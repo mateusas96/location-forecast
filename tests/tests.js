@@ -8,7 +8,7 @@ const testingData = {
 /**
  * Check if data fetching from API works correclty
  */
-check_api_fetch = async() => {
+checkApiFetch = async() => {
 	let success;
 
 	try {
@@ -29,7 +29,7 @@ check_api_fetch = async() => {
 	addRowToTestTable(testResults);
 }
 
-check_if_probability_of_rain_is_number = async() => {
+checkIfProbabilityOfRainIsNumber = async() => {
 	const weatherData = new GetWeatherData(testingData, 'button', 'error');
 	const data = await weatherData.getData();
 
@@ -59,5 +59,5 @@ addRowToTestTable = (testData) => {
 	row.insertCell().innerHTML = testData.testResult === testData.expectedResult ? 'True' : 'False';
 }
 
-check_api_fetch();
-check_if_probability_of_rain_is_number();
+checkApiFetch();
+checkIfProbabilityOfRainIsNumber();
